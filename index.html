@@ -3,365 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Structure Trade Lab — Critical forex trading education from 6+ years of experience. Learn leverage, risk management, position sizing, and what to know before you start trading.">
-    <title>Structure Trade Lab — Critical Things to Know Before Trading</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
-            line-height: 1.6;
-            color: #1a1a2e;
-            background: #f8f9fa;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        header {
-            background: #0a2540;
-            color: white;
-            padding: 20px 0;
-            border-bottom: 3px solid #00b4d8;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .header-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo h1 {
-            font-size: 1.5rem;
-        }
-        .logo p {
-            font-size: 0.8rem;
-            color: #a0c4e2;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 25px;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-        nav a:hover {
-            color: #00b4d8;
-        }
-        .hero {
-            background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
-            color: white;
-            padding: 80px 0;
-            text-align: center;
-        }
-        .hero h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            line-height: 1.3;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-            color: #cce4f0;
-        }
-        .section {
-            padding: 60px 0;
-            border-bottom: 1px solid #e0e0e0;
-        }
-        .section:last-of-type {
-            border-bottom: none;
-        }
-        .section h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            text-align: center;
-            color: #0a2540;
-        }
-        .section-subhead {
-            text-align: center;
-            color: #6c757d;
-            margin-bottom: 40px;
-            font-size: 1.1rem;
-        }
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            border: 1px solid #e0e0e0;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-        }
-        .card h3 {
-            margin-bottom: 12px;
-            color: #0a2540;
-            font-size: 1.2rem;
-        }
-        .card p {
-            color: #4a5568;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
-        }
-        .card a {
-            color: #00b4d8;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        .card a:hover {
-            text-decoration: underline;
-        }
-        .tool-icon {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-        .btn-outline {
-            display: inline-block;
-            background: transparent;
-            border: 2px solid #00b4d8;
-            color: #0a2540;
-            padding: 10px 28px;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 50px;
-            margin-top: 20px;
-            transition: all 0.2s;
-        }
-        .btn-outline:hover {
-            background: #00b4d8;
-            color: #0a2540;
-        }
-        .checklist-item {
-            background: white;
-            margin: 15px 0;
-            padding: 20px 25px;
-            border-radius: 12px;
-            border-left: 4px solid #00b4d8;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            transition: transform 0.2s;
-        }
-        .checklist-item:hover {
-            transform: translateX(5px);
-        }
-        .checklist-item h3 {
-            margin-bottom: 8px;
-            color: #0a2540;
-        }
-        .checklist-item p {
-            color: #4a5568;
-        }
-        .about-box {
-            background: white;
-            padding: 35px;
-            border-radius: 16px;
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-        .about-box p {
-            margin-bottom: 15px;
-            color: #4a5568;
-        }
-        footer {
-            background: #0a2540;
-            color: #a0c4e2;
-            text-align: center;
-            padding: 40px 0;
-            margin-top: 40px;
-        }
-        .footer-disclosure {
-            font-size: 0.75rem;
-            max-width: 900px;
-            margin: 0 auto 20px;
-            line-height: 1.5;
-        }
-        footer a {
-            color: #00b4d8;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 1.8rem; }
-            .section h2 { font-size: 1.5rem; }
-            .header-flex { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 12px; font-size: 0.85rem; }
-            .checklist-item { padding: 15px; }
-        }
-    </style>
+    <meta name="description" content="Free forex trading tools — position size calculator, trading journal, risk calculator, and more. Built by a trader for traders. 100% free, no catch.">
+    <title>Free Forex Trading Tools — Structure Trade Lab</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="container header-flex">
             <div class="logo">
-                <h1>📐 Structure Trade Lab</h1>
-                <p>Trade with Structure. Trade with a Plan.</p>
+                <a href="https://structuretradelab.com">
+                    <h1>📐 Structure Trade Lab</h1>
+                    <p>Trade with Structure. Trade with a Plan.</p>
+                </a>
             </div>
             <nav>
-                <a href="/">Home</a>
-                <a href="/blog/">Blog</a>
-                <a href="/tools/">Tools</a>
-                <a href="/about/">About</a>
+                <a href="https://structuretradelab.com">Home</a>
+                <a href="https://blog.structuretradelab.com">Blog</a>
+                <a href="/">Tools</a>
+                <a href="https://structuretradelab.com/about">About</a>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="tools-hero">
         <div class="container">
-            <h2>6+ Years Trading Experience.<br>What I Wish I Knew Before Starting.</h2>
-            <p>No hype. No get-rich-quick promises. Just real lessons from years of screen time — leverage, risk management, position sizing, and trading psychology.</p>
+            <h1>🔧 Free Trading Tools</h1>
+            <p>Built by a trader, for traders — 100% free, no email required, no catch.</p>
         </div>
     </section>
 
-    <div class="container">
-        <!-- Critical Things to Know Section -->
-        <section class="section">
-            <h2>📘 Critical Things to Know Before You Start Trading</h2>
-            <div class="section-subhead">What I wish someone told me 6 years ago</div>
-            <div class="grid-3">
-                <div class="card">
-                    <h3>1. Leverage Is a Double-Edged Sword</h3>
-                    <p>It amplifies gains AND losses. Most beginners use too much. I recommend 1:10 or 1:20 max for the first year.</p>
-                    <a href="/blog/leverage-explained/">Read more →</a>
-                </div>
-                <div class="card">
-                    <h3>2. Risk Management > Strategy</h3>
-                    <p>You can have a mediocre strategy and survive with good risk management. The opposite is not true.</p>
-                    <a href="/blog/risk-management/">Read more →</a>
-                </div>
-                <div class="card">
-                    <h3>3. Demo Trading Is Not Optional</h3>
-                    <p>Trade a demo account for 2-3 months before using real money. Your future self will thank you.</p>
-                    <a href="/blog/demo-trading/">Read more →</a>
-                </div>
-                <div class="card">
-                    <h3>4. Most "Gurus" Are Faking It</h3>
-                    <p>If someone promises guaranteed profits, run. Real trading is boring and inconsistent.</p>
-                    <a href="/blog/trading-gurus/">Read more →</a>
-                </div>
-                <div class="card">
-                    <h3>5. Focus on 1-2 Pairs, Not 20</h3>
-                    <p>Master EUR/USD or GBP/USD before diversifying. Less is more.</p>
-                    <a href="/blog/choose-forex-pairs/">Read more →</a>
-                </div>
-                <div class="card">
-                    <h3>6. Trading Psychology Is Everything</h3>
-                    <p>Fear and greed will ruin good setups. Learn to detach emotionally.</p>
-                    <a href="/blog/trading-psychology/">Read more →</a>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="/blog/" class="btn-outline">View All Essential Guides →</a>
-            </div>
-        </section>
-
-        <!-- Checklist Style Section -->
-        <section class="section">
-            <h2>✅ The Pre-Trading Checklist</h2>
-            <div class="section-subhead">6 rules I follow after 6 years</div>
-            <div style="max-width: 800px; margin: 0 auto;">
-                <div class="checklist-item">
-                    <h3>✓ Start with a demo account — no exceptions</h3>
-                    <p>2-3 months minimum. Prove you can be profitable before risking real money.</p>
-                </div>
-                <div class="checklist-item">
-                    <h3>✓ Risk 1-2% per trade maximum</h3>
-                    <p>This is the golden rule. Break it and you will blow your account eventually.</p>
-                </div>
-                <div class="checklist-item">
-                    <h3>✓ Low leverage saves lives</h3>
-                    <p>1:10 or 1:20 for beginners. Ignore brokers offering 1:1000 — that's how they profit from your losses.</p>
-                </div>
-                <div class="checklist-item">
-                    <h3>✓ Have a trading plan before you enter</h3>
-                    <p>Entry, stop loss, take profit, position size. Write it down. Stick to it.</p>
-                </div>
-                <div class="checklist-item">
-                    <h3>✓ Journal every trade</h3>
-                    <p>You can't improve what you don't measure. Track your wins and losses.</p>
-                </div>
-                <div class="checklist-item">
-                    <h3>✓ Stop loss = survival. Always use it.</h3>
-                    <p>Every trade. No exceptions. Even when you're "sure" it will reverse.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Free Tools Section -->
-        <section class="section">
-            <h2>🔧 Free Trading Tools (Coming Soon)</h2>
-            <div class="section-subhead">Built by a trader, for traders — 100% free, no catch</div>
-            <div class="grid-3">
-                <div class="card">
+    <!-- Tools Grid -->
+    <section class="tools-section">
+        <div class="container">
+            <div class="tools-grid">
+                <!-- Tool 1: Position Size Calculator -->
+                <div class="tool-card">
                     <div class="tool-icon">📐</div>
-                    <h3>Position Size Calculator</h3>
-                    <p>Calculate exact lot sizes based on account balance, risk percentage, and stop loss distance.</p>
-                    <p style="font-size: 0.8rem; color: #00b4d8; margin-top: 10px;">Launching soon</p>
+                    <h2>Position Size Calculator</h2>
+                    <p>Calculate exact lot sizes based on your account balance, risk percentage, and stop loss distance. Never risk more than you planned.</p>
+                    <div class="tool-features">
+                        <span>✓ Account currency support</span>
+                        <span>✓ Multiple lot sizes</span>
+                        <span>✓ Risk % or fixed amount</span>
+                    </div>
+                    <div class="tool-status coming-soon">
+                        <span class="status-badge">🚀 Coming Soon</span>
+                        <p>Launching within 2 weeks</p>
+                    </div>
+                    <button class="btn-notify" onclick="notifyMe('Position Size Calculator')">Get Notified →</button>
                 </div>
-                <div class="card">
-                    <div class="tool-icon">📓</div>
-                    <h3>Trading Journal</h3>
-                    <p>Track every trade, analyze performance, identify patterns in your winning and losing trades.</p>
-                    <p style="font-size: 0.8rem; color: #00b4d8; margin-top: 10px;">Launching soon</p>
-                </div>
-                <div class="card">
-                    <div class="tool-icon">⚠️</div>
-                    <h3>Risk Calculator</h3>
-                    <p>Determine optimal position size based on your account size and risk tolerance.</p>
-                    <p style="font-size: 0.8rem; color: #00b4d8; margin-top: 10px;">Launching soon</p>
-                </div>
-            </div>
-            <div style="text-align: center; margin-top: 30px;">
-                <a href="/tools/" class="btn-outline">Get Notified When Tools Launch →</a>
-            </div>
-        </section>
 
-        <!-- About the Trader Section -->
-        <section class="section">
-            <h2>About the Trader Behind This Lab</h2>
-            <div class="about-box">
-                <p>I've been trading forex for over 6 years. I started like everyone else — confused, excited, and losing money. I've made the classic mistakes: over-leveraging, revenge trading, chasing losses, and trusting fake gurus.</p>
-                <p>Over time, I developed a systematic approach based on market structure and strict risk management. I stopped trying to get rich quick and started trading with structure.</p>
-                <p>This site is where I share what actually works — no hype, no courses, no get-rich-quick promises. Just honest education from someone who's been in the trenches.</p>
-                <p style="font-weight: bold; margin-top: 20px;">— A trader who learned the hard way so you don't have to.</p>
+                <!-- Tool 2: Trading Journal -->
+                <div class="tool-card">
+                    <div class="tool-icon">📓</div>
+                    <h2>Trading Journal</h2>
+                    <p>Track every trade, analyze performance, and identify patterns in your winning and losing trades. Data-driven improvement.</p>
+                    <div class="tool-features">
+                        <span>✓ Import/export trades</span>
+                        <span>✓ Performance analytics</span>
+                        <span>✓ Win rate tracking</span>
+                    </div>
+                    <div class="tool-status coming-soon">
+                        <span class="status-badge">🚀 Coming Soon</span>
+                        <p>Launching in 3-4 weeks</p>
+                    </div>
+                    <button class="btn-notify" onclick="notifyMe('Trading Journal')">Get Notified →</button>
+                </div>
+
+                <!-- Tool 3: Risk Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">⚠️</div>
+                    <h2>Risk Calculator</h2>
+                    <p>Determine optimal position size based on your account size and risk tolerance. Know exactly how much you're risking before entry.</p>
+                    <div class="tool-features">
+                        <span>✓ Multiple currency pairs</span>
+                        <span>✓ Stop loss in pips/$</span>
+                        <span>✓ R:R ratio calculator</span>
+                    </div>
+                    <div class="tool-status coming-soon">
+                        <span class="status-badge">🚀 Coming Soon</span>
+                        <p>Launching in 2 weeks</p>
+                    </div>
+                    <button class="btn-notify" onclick="notifyMe('Risk Calculator')">Get Notified →</button>
+                </div>
+
+                <!-- Tool 4: R:R Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">🎯</div>
+                    <h2>Risk-to-Reward Calculator</h2>
+                    <p>Calculate your minimum profit target based on your risk. Understand if a trade is worth taking before you enter.</p>
+                    <div class="tool-features">
+                        <span>✓ 1:1 to 1:5 ratios</span>
+                        <span>✓ Win rate breakeven</span>
+                        <span>✓ Expectancy calculator</span>
+                    </div>
+                    <div class="tool-status coming-soon">
+                        <span class="status-badge">🚀 Coming Soon</span>
+                        <p>Launching in 4 weeks</p>
+                    </div>
+                    <button class="btn-notify" onclick="notifyMe('Risk-to-Reward Calculator')">Get Notified →</button>
+                </div>
+
+                <!-- Tool 5: Pip Value Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">💵</div>
+                    <h2>Pip Value Calculator</h2>
+                    <p>Know exactly how much each pip is worth in your account currency. Essential for accurate position sizing.</p>
+                    <div class="tool-features">
+                        <span>✓ All major pairs</span>
+                        <span>✓ Exotic pairs support</span>
+                        <span>✓ Custom lot sizes</span>
+                    </div>
+                    <div class="tool-status coming-soon">
+                        <span class="status-badge">🚀 Coming Soon</span>
+                        <p>Launching in 5 weeks</p>
+                    </div>
+                    <button class="btn-notify" onclick="notifyMe('Pip Value Calculator')">Get Notified →</button>
+                </div>
+
+                <!-- Tool 6: Margin Calculator -->
+                <div class="tool-card">
+                    <div class="tool-icon">🏦</div>
+                    <h2>Margin Calculator</h2>
+                    <p>Calculate required margin for your trades. Avoid margin calls by understanding your leverage exposure.</p>
+                    <div class="tool-features">
+                        <span>✓ Leverage: 1:10 to 1:500</span>
+                        <span>✓ Real-time margin %</span>
+                        <span>✓ Account currency</span>
+                    </div>
+                    <div class="tool-status coming-soon">
+                        <span class="status-badge">🚀 Coming Soon</span>
+                        <p>Launching in 6 weeks</p>
+                    </div>
+                    <button class="btn-notify" onclick="notifyMe('Margin Calculator')">Get Notified →</button>
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
+
+    <!-- Why Free Tools Section -->
+    <!--
+    <section class="why-free">
+        <div class="container">
+            <div class="why-free-content">
+                <div class="why-free-text">
+                    <h2>Why Free? No Catch?</h2>
+                    <p>I'm a trader, not a software company. I built these tools for myself first — to manage my own risk and track my performance. Then I realized other traders could benefit too.</p>
+                    <p><strong>No email required. No credit card. No "premium" upgrade.</strong> Just honest tools that work.</p>
+                    <p>If you find them useful, share them with another trader. That's all I ask.</p>
+                    <div class="why-free-note">
+                        <p>🔗 <strong>Affiliate disclosure:</strong> Some links on this site earn me a commission (at no cost to you). This helps keep the tools free. I only recommend brokers I personally use.</p>
+                    </div>
+                </div>
+                <div class="why-free-stats">
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Free Forever</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Email Required</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Tools Coming</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- Newsletter Section (Optional - for tool launch notifications) -->
+    <!--
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-box">
+                <h3>📧 Get notified when tools launch</h3>
+                <p>No spam. Just 1 email when each tool goes live.</p>
+                <form id="notify-form" class="newsletter-form">
+                    <input type="email" id="notify-email" placeholder="Your email address" required>
+                    <button type="submit">Notify Me →</button>
+                </form>
+                <p class="newsletter-note">Your email stays private. Unsubscribe anytime.</p>
+                <div id="form-message" style="margin-top: 10px; font-size: 0.8rem;"></div>
+            </div>
+        </div>
+    </section>
+    -->
 
     <footer>
         <div class="container">
             <div class="footer-disclosure">
-                <strong>Disclosure:</strong> Structure Trade Lab is an independent educational website. I may participate in affiliate programs and earn commissions when you trade through links on this site. This does not affect your trading conditions or costs. I only recommend brokers I personally use and trust.
+                <strong>Disclosure:</strong> Structure Trade Lab is an independent educational website. I am an Exness Introducing Broker (IB) and may earn commissions when you trade through links on this site. This does not affect your trading conditions or costs.
             </div>
             <div class="footer-disclosure">
-                <strong>Risk Warning:</strong> Trading forex and CFDs carries a high level of risk. Past performance does not guarantee future results. The information on this site is for educational purposes only and should not be considered financial advice. Only trade with money you can afford to lose.
+                <strong>Risk Warning:</strong> Trading forex and CFDs carries a high level of risk. Past performance does not guarantee future results. These tools are for educational purposes only.
             </div>
-            <p>© 2026 Structure Trade Lab. All rights reserved.</p>
+            <p>© <span id="current-year"></span> Structure Trade Lab. All rights reserved.</p>
             <p style="margin-top: 10px;">
                 <a href="https://structuretradelab.com">Home</a> | 
-                <a href="https://blog.structuretradelab.com/">Blog</a> | 
-                <a href="https://tools.structuretradelab.com">Tools</a> | 
-                <a href="https://structuretradelab.com/about">About</a> | 
-                <a href="https://structuretradelab.com/broker-setup/">Broker Setup</a>
+                <a href="https://blog.structuretradelab.com">Blog</a> | 
+                <a href="/">Tools</a> | 
+                <a href="https://structuretradelab.com/about">About</a>
             </p>
         </div>
     </footer>
+
+    <script>
+        // Dynamic copyright year
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Simple notification collection (replace with actual backend later)
+        document.getElementById('notify-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('notify-email').value;
+            const messageDiv = document.getElementById('form-message');
+            
+            // Store in localStorage for demo (replace with actual API endpoint)
+            localStorage.setItem('tool_notify_email', email);
+            
+            messageDiv.innerHTML = '✅ Thanks! We\'ll notify you when tools launch.';
+            messageDiv.style.color = 'green';
+            document.getElementById('notify-email').value = '';
+            
+            // In production, send to your backend or email service (Mailchimp, ConvertKit, etc.)
+            console.log('Email saved:', email);
+        });
+
+        // Notify me button for individual tools
+        function notifyMe(toolName) {
+            const email = prompt(`Enter your email to get notified when ${toolName} launches:`);
+            if (email && email.includes('@')) {
+                localStorage.setItem(`${toolName}_notify`, email);
+                alert(`✅ Thanks! We'll email you when ${toolName} is ready.`);
+            } else if (email) {
+                alert('Please enter a valid email address.');
+            }
+        }
+    </script>
 </body>
 </html>
