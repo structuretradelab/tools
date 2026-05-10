@@ -1,222 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-9HB3LHNF2W"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-9HB3LHNF2W');
-</script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HB3LHNF2W"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-9HB3LHNF2W');
+    </script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free forex trading tools — position size calculator, trading journal, risk calculator, and more. Built by a trader for traders. 100% free, no catch.">
-    <title>Free Forex Trading Tools — Structure Trade Lab</title>
-    <link rel="stylesheet" href="https://structuretradelab.com/assets/css/style.css">
+    <meta name="description" content="Free forex trading tools: position size calculator, risk reward calculator, pip value calculator, leverage margin tool, Fibonacci tool, and compound profit calculator. Built by traders for traders.">
+    <title>Free Forex Trading Tools — Calculators & Indicators | Structure Trade Lab</title>
+    <link rel="stylesheet" href="https://structuretradelab.com/css/style.css">
 </head>
 <body>
+
     <header>
         <div class="container header-flex">
             <div class="logo">
-                <a href="https://structuretradelab.com">
-                    <h1>📊 Structure Trade Lab</h1>
-                    <p>Trade with Structure. Trade with a Plan.</p>
+                <a href="https://tools.structuretradelab.com">
+                    <h1>🔧 Structure Trade Lab</h1>
+                    <p>Free tools for smarter trading</p>
                 </a>
             </div>
             <nav>
                 <a href="https://structuretradelab.com">Home</a>
                 <a href="https://blog.structuretradelab.com">Blog</a>
-                <a href="/">Tools</a>
+                <a href="https://tools.structuretradelab.com">Tools</a>
                 <a href="https://structuretradelab.com/about">About</a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="tools-hero">
+    <div class="tools-hero">
         <div class="container">
-            <h1>🔧 Free Trading Tools</h1>
-            <p>Built by a trader, for traders — 100% free, no email required, no catch.</p>
+            <h1>📊 Free Forex Trading Tools</h1>
+            <p>Professional calculators, indicators, and utilities — built by traders, for traders. 100% free.</p>
         </div>
-    </section>
+    </div>
 
-    <!-- Tools Grid -->
-    <section class="tools-section">
-        <div class="container">
+    <div class="container">
+        
+        <section style="padding-top: 20px;">
+            <h2 class="section-title">⚡ Essential Calculators</h2>
+            <p class="section-subtitle">No signup, no email — instant results</p>
             <div class="tools-grid">
-                <!-- Tool 1: Position Size Calculator -->
-                <div class="tool-card">
+                <a href="/position-size-calculator/" class="tool-card">
                     <div class="tool-icon">📐</div>
-                    <h2>Position Size Calculator</h2>
-                    <p>Calculate exact lot sizes based on your account balance, risk percentage, and stop loss distance. Never risk more than you planned.</p>
-                    <div class="tool-features">
-                        <span>✓ Account currency support</span>
-                        <span>✓ Multiple lot sizes</span>
-                        <span>✓ Risk % or fixed amount</span>
-                    </div>
-                    <div class="tool-status coming-soon">
-                        <span class="status-badge">🚀 Coming Soon</span>
-                        <p>Launching within 2 weeks</p>
-                    </div>
-                    <button class="btn-notify" onclick="notifyMe('Position Size Calculator')">Get Notified →</button>
-                </div>
-
-                <!-- Tool 2: Trading Journal -->
-                <div class="tool-card">
-                    <div class="tool-icon">📓</div>
-                    <h2>Trading Journal</h2>
-                    <p>Track every trade, analyze performance, and identify patterns in your winning and losing trades. Data-driven improvement.</p>
-                    <div class="tool-features">
-                        <span>✓ Import/export trades</span>
-                        <span>✓ Performance analytics</span>
-                        <span>✓ Win rate tracking</span>
-                    </div>
-                    <div class="tool-status coming-soon">
-                        <span class="status-badge">🚀 Coming Soon</span>
-                        <p>Launching in 3-4 weeks</p>
-                    </div>
-                    <button class="btn-notify" onclick="notifyMe('Trading Journal')">Get Notified →</button>
-                </div>
-
-                <!-- Tool 3: Risk Calculator -->
-                <div class="tool-card">
-                    <div class="tool-icon">⚠️</div>
-                    <h2>Risk Calculator</h2>
-                    <p>Determine optimal position size based on your account size and risk tolerance. Know exactly how much you're risking before entry.</p>
-                    <div class="tool-features">
-                        <span>✓ Multiple currency pairs</span>
-                        <span>✓ Stop loss in pips/$</span>
-                        <span>✓ R:R ratio calculator</span>
-                    </div>
-                    <div class="tool-status coming-soon">
-                        <span class="status-badge">🚀 Coming Soon</span>
-                        <p>Launching in 2 weeks</p>
-                    </div>
-                    <button class="btn-notify" onclick="notifyMe('Risk Calculator')">Get Notified →</button>
-                </div>
-
-                <!-- Tool 4: R:R Calculator -->
-                <div class="tool-card">
-                    <div class="tool-icon">🎯</div>
-                    <h2>Risk-to-Reward Calculator</h2>
-                    <p>Calculate your minimum profit target based on your risk. Understand if a trade is worth taking before you enter.</p>
-                    <div class="tool-features">
-                        <span>✓ 1:1 to 1:5 ratios</span>
-                        <span>✓ Win rate breakeven</span>
-                        <span>✓ Expectancy calculator</span>
-                    </div>
-                    <div class="tool-status coming-soon">
-                        <span class="status-badge">🚀 Coming Soon</span>
-                        <p>Launching in 4 weeks</p>
-                    </div>
-                    <button class="btn-notify" onclick="notifyMe('Risk-to-Reward Calculator')">Get Notified →</button>
-                </div>
-
-                <!-- Tool 5: Pip Value Calculator -->
-                <div class="tool-card">
-                    <div class="tool-icon">💵</div>
-                    <h2>Pip Value Calculator</h2>
-                    <p>Know exactly how much each pip is worth in your account currency. Essential for accurate position sizing.</p>
-                    <div class="tool-features">
-                        <span>✓ All major pairs</span>
-                        <span>✓ Exotic pairs support</span>
-                        <span>✓ Custom lot sizes</span>
-                    </div>
-                    <div class="tool-status coming-soon">
-                        <span class="status-badge">🚀 Coming Soon</span>
-                        <p>Launching in 5 weeks</p>
-                    </div>
-                    <button class="btn-notify" onclick="notifyMe('Pip Value Calculator')">Get Notified →</button>
-                </div>
-
-                <!-- Tool 6: Margin Calculator -->
-                <div class="tool-card">
-                    <div class="tool-icon">🏦</div>
-                    <h2>Margin Calculator</h2>
-                    <p>Calculate required margin for your trades. Avoid margin calls by understanding your leverage exposure.</p>
-                    <div class="tool-features">
-                        <span>✓ Leverage: 1:10 to 1:500</span>
-                        <span>✓ Real-time margin %</span>
-                        <span>✓ Account currency</span>
-                    </div>
-                    <div class="tool-status coming-soon">
-                        <span class="status-badge">🚀 Coming Soon</span>
-                        <p>Launching in 6 weeks</p>
-                    </div>
-                    <button class="btn-notify" onclick="notifyMe('Margin Calculator')">Get Notified →</button>
-                </div>
+                    <h3>Position Size Calculator</h3>
+                    <p>Calculate exact lot size based on risk %, stop loss in pips, and account balance. Perfect for the 1% rule.</p>
+                    <span class="badge">Most used</span>
+                </a>
+                <a href="/risk-reward-calculator/" class="tool-card">
+                    <div class="tool-icon">⚖️</div>
+                    <h3>Risk Reward Calculator</h3>
+                    <p>See your reward-to-risk ratio before entering any trade. Input entry, stop loss, and take profit.</p>
+                    <span class="badge">Essential</span>
+                </a>
+                <a href="/pip-value-calculator/" class="tool-card">
+                    <div class="tool-icon">💧</div>
+                    <h3>Pip Value Calculator</h3>
+                    <p>Calculate pip value for any currency pair, lot size, and account currency. Works for majors and exotics.</p>
+                </a>
+                <a href="/leverage-margin-calculator/" class="tool-card">
+                    <div class="tool-icon">⚡</div>
+                    <h3>Leverage & Margin</h3>
+                    <p>See required margin based on leverage, position size, and instrument. Understand your exposure.</p>
+                </a>
+                <a href="/fibonacci-calculator/" class="tool-card">
+                    <div class="tool-icon">🌀</div>
+                    <h3>Fibonacci Retracement</h3>
+                    <p>Generate key Fibonacci levels (23.6%, 38.2%, 50%, 61.8%, 78.6%) from high/low prices.</p>
+                    <span class="badge">Strategy</span>
+                </a>
+                <a href="/compound-profit-calculator/" class="tool-card">
+                    <div class="tool-icon">📈</div>
+                    <h3>Compound Profit</h3>
+                    <p>See how your account grows with consistent compounding. Plan long-term expectations.</p>
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Why Free Tools Section -->
-    <!--
-    <section class="why-free">
-        <div class="container">
-            <div class="why-free-content">
-                <div class="why-free-text">
-                    <h2>Why Free? No Catch?</h2>
-                    <p>I'm a trader, not a software company. I built these tools for myself first — to manage my own risk and track my performance. Then I realized other traders could benefit too.</p>
-                    <p><strong>No email required. No credit card. No "premium" upgrade.</strong> Just honest tools that work.</p>
-                    <p>If you find them useful, share them with another trader. That's all I ask.</p>
-                    <div class="why-free-note">
-                        <p>🔗 <strong>Affiliate disclosure:</strong> Some links on this site earn me a commission (at no cost to you). This helps keep the tools free. I only recommend brokers I personally use.</p>
-                    </div>
-                </div>
-                <div class="why-free-stats">
-                    <div class="stat">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Free Forever</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">0</span>
-                        <span class="stat-label">Email Required</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">6</span>
-                        <span class="stat-label">Tools Coming</span>
-                    </div>
-                </div>
+        <!-- ================================================== -->
+        <!-- FUTURE SECTIONS (commented out)                   -->
+        <!-- TradingView Indicators, MQL5/EA, MT4/MT5         -->
+        <!-- ================================================== -->
+        
+        <!--
+        <section class="featured-section">
+            <h2 class="section-title">📈 TradingView Indicators</h2>
+            <p class="section-subtitle">Free Pine Script indicators</p>
+            <div class="tools-grid">
+                <a href="/tradingview/smart-support-resistance/" class="tool-card">
+                    <div class="tool-icon">📊</div>
+                    <h3>Smart Support & Resistance</h3>
+                    <p>Auto-draws dynamic S/R levels based on swing highs/lows.</p>
+                    <span class="badge-platform">TradingView</span>
+                </a>
             </div>
-        </div>
-    </section>
-    -->
+        </section>
 
-    <!-- Newsletter Section (Optional - for tool launch notifications) -->
-    <!--
-    <section class="newsletter">
-        <div class="container">
-            <div class="newsletter-box">
-                <h3>📧 Get notified when tools launch</h3>
-                <p>No spam. Just 1 email when each tool goes live.</p>
-                <form id="notify-form" class="newsletter-form">
-                    <input type="email" id="notify-email" placeholder="Your email address" required>
-                    <button type="submit">Notify Me →</button>
-                </form>
-                <p class="newsletter-note">Your email stays private. Unsubscribe anytime.</p>
-                <div id="form-message" style="margin-top: 10px; font-size: 0.8rem;"></div>
+        <section class="featured-section">
+            <h2 class="section-title">🤖 MQL5 / Expert Advisors</h2>
+            <p class="section-subtitle">Free EAs for MT4/MT5</p>
+            <div class="tools-grid">
+                <a href="/mql5/risk-manager-ea/" class="tool-card">
+                    <div class="tool-icon">🛡️</div>
+                    <h3>Risk Manager EA</h3>
+                    <p>Automatically adjusts lot size based on risk %, trailing stop, partial closes.</p>
+                    <span class="badge-platform">MT4/MT5</span>
+                </a>
             </div>
-        </div>
-    </section>
-    -->
+        </section>
 
-    <!-- FOOTER -->
+        <section class="featured-section">
+            <h2 class="section-title">📜 MT4/MT5 Indicators</h2>
+            <p class="section-subtitle">Professional indicators</p>
+            <div class="tools-grid">
+                <a href="/mt4-indicators/structure-scanner/" class="tool-card">
+                    <div class="tool-icon">🔎</div>
+                    <h3>Structure Scanner</h3>
+                    <p>Scans multiple timeframes for market structure breaks.</p>
+                    <span class="badge-platform">MT4/MT5</span>
+                </a>
+            </div>
+        </section>
+        -->
+
+        <div class="coming-note">
+            💡 <strong>More tools coming soon.</strong> TradingView indicators, MQL5 Expert Advisors, and MT4/MT5 indicators are in development — completely free when released.
+        </div>
+
+    </div>
+
     <footer>
         <div class="container">
             <div class="footer-disclosure">
                 <strong>Disclosure:</strong> Structure Trade Lab is an independent educational website. As an Introducing Broker (IB), I may earn commissions when you trade through links on this site. This does not affect your trading conditions or costs.
             </div>
             <div class="footer-disclosure">
-                <strong>Risk Warning:</strong> Trading forex and CFDs carries a high level of risk. Past performance does not guarantee future results. Only trade with money you can afford to lose.
+                <strong>Risk Warning:</strong> Trading forex and CFDs carries a high level of risk. Past performance does not guarantee future results. Only trade with money you can afford to lose. All tools are for educational purposes.
             </div>
             <p>© <span id="current-year"></span> Structure Trade Lab. All rights reserved.</p>
             <p style="margin-top: 10px;">
                 <a href="https://structuretradelab.com">Home</a> | 
-                <a href="/">Blog</a> | 
+                <a href="https://blog.structuretradelab.com">Blog</a> | 
                 <a href="https://tools.structuretradelab.com">Tools</a> |
                 <a href="https://structuretradelab.com/about">About</a>
             </p>
@@ -224,36 +155,7 @@
     </footer>
 
     <script>
-        // Dynamic copyright year
         document.getElementById('current-year').textContent = new Date().getFullYear();
-
-        // Simple notification collection (replace with actual backend later)
-        document.getElementById('notify-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = document.getElementById('notify-email').value;
-            const messageDiv = document.getElementById('form-message');
-            
-            // Store in localStorage for demo (replace with actual API endpoint)
-            localStorage.setItem('tool_notify_email', email);
-            
-            messageDiv.innerHTML = '✅ Thanks! We\'ll notify you when tools launch.';
-            messageDiv.style.color = 'green';
-            document.getElementById('notify-email').value = '';
-            
-            // In production, send to your backend or email service (Mailchimp, ConvertKit, etc.)
-            console.log('Email saved:', email);
-        });
-
-        // Notify me button for individual tools
-        function notifyMe(toolName) {
-            const email = prompt(`Enter your email to get notified when ${toolName} launches:`);
-            if (email && email.includes('@')) {
-                localStorage.setItem(`${toolName}_notify`, email);
-                alert(`✅ Thanks! We'll email you when ${toolName} is ready.`);
-            } else if (email) {
-                alert('Please enter a valid email address.');
-            }
-        }
     </script>
 </body>
 </html>
