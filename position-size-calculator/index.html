@@ -12,7 +12,7 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free forex position size calculator. Calculate exact lot size based on account balance, risk percentage, stop loss in pips, and live market prices.">
+    <meta name="description" content="Free forex position size calculator. Calculate exact lot size based on account balance, risk percentage, stop loss in pips, and live market prices. Saves your settings automatically.">
     <meta name="keywords" content="position size calculator, forex lot size calculator, risk management tool, forex calculator">
     <title>Position Size Calculator — Forex Risk Management Tool | Structure Trade Lab</title>
     <link rel="stylesheet" href="https://structuretradelab.com/assets/css/style.css">
@@ -145,6 +145,7 @@
             font-size: 0.65rem;
             color: #6c757d;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
             margin-bottom: 4px;
         }
         
@@ -178,6 +179,24 @@
             font-size: 0.8rem;
             color: #2ecc71;
             display: none;
+        }
+        
+        .reset-btn {
+            background: transparent;
+            border: 1px solid #dce4ec;
+            color: #6c757d;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: all 0.2s;
+        }
+        
+        .reset-btn:hover {
+            background: #f0f4f8;
+            border-color: #00b4d8;
+            color: #0a2540;
         }
         
         .info-text {
@@ -235,7 +254,7 @@
             <nav>
                 <a href="https://structuretradelab.com">Home</a>
                 <a href="https://blog.structuretradelab.com">Blog</a>
-                <a href="/">Tools</a>
+                <a href="https://tools.structuretradelab.com">Tools</a>
                 <a href="https://structuretradelab.com/about">About</a>
             </nav>
         </div>
@@ -244,7 +263,7 @@
     <div class="tools-hero" style="padding: 40px 0;">
         <div class="container">
             <h1>📐 Position Size Calculator</h1>
-            <p>Calculate the exact lot size based on your risk rules and live market prices.</p>
+            <p>Calculate the exact lot size based on your risk rules and live market prices. Your settings are saved automatically.</p>
         </div>
     </div>
 
@@ -256,22 +275,22 @@
             </div>
             
             <div class="account-note">
-                💵 <strong>USD Account Only</strong> — This calculator assumes your trading account is denominated in USD.
+                💵 <strong>USD Account Only</strong> — This calculator assumes your trading account is denominated in USD. All your settings are saved locally.
             </div>
             
             <div class="input-group">
                 <label>💰 Account Balance (USD)</label>
-                <input type="number" id="balance" value="10000" step="100" placeholder="Enter account balance in USD">
+                <input type="number" id="balance" step="100" placeholder="Enter account balance in USD">
             </div>
             
             <div class="input-row">
                 <div class="input-group">
                     <label>⚠️ Risk Percentage (%)</label>
-                    <input type="number" id="riskPercent" value="1" step="0.5" placeholder="Risk per trade">
+                    <input type="number" id="riskPercent" step="0.5" placeholder="Risk per trade">
                 </div>
                 <div class="input-group">
                     <label>📉 Stop Loss (pips)</label>
-                    <input type="number" id="stopLossPips" value="20" step="1" placeholder="Stop loss in pips">
+                    <input type="number" id="stopLossPips" step="1" placeholder="Stop loss in pips">
                 </div>
             </div>
             
@@ -292,38 +311,42 @@
                 </select>
             </div>
             
-            <!-- Dynamic price input field - appears for pairs that need it -->
+            <!-- Dynamic price input field -->
             <div class="input-group" id="priceInputGroup" style="display: none;">
                 <label id="priceLabel">💰 Current Market Price</label>
                 <input type="number" id="currentPrice" step="0.0001" placeholder="Enter current price">
-                <div class="helper-text" id="priceHelper">Find this in your trading platform</div>
+                <div class="helper-text" id="priceHelper">Find this in your trading platform. Saved for next time.</div>
             </div>
             
             <div class="result-box">
                 <div class="result-label">Recommended Position Size</div>
-                <div class="result-value" id="positionSize">0.50</div>
-                <div class="result-sub" id="positionUnits">≈ 50,000 units</div>
+                <div class="result-value" id="positionSize">0.00</div>
+                <div class="result-sub" id="positionUnits">≈ 0 units</div>
             </div>
             
             <button class="copy-btn" id="copyBtn">📋 Copy Result to Clipboard</button>
             <div class="copy-success" id="copySuccess">✓ Copied to clipboard!</div>
             
+            <div style="text-align: center; margin-top: 12px;">
+                <button class="reset-btn" id="resetBtn">⟳ Reset to Defaults</button>
+            </div>
+            
             <div class="details-grid">
                 <div class="detail-card">
                     <div class="detail-label">Risk Amount</div>
-                    <div class="detail-value" id="riskAmount">$100.00</div>
+                    <div class="detail-value" id="riskAmount">$0.00</div>
                 </div>
                 <div class="detail-card">
                     <div class="detail-label">Pip Value (1 lot)</div>
-                    <div class="detail-value" id="pipValue">$10.00</div>
+                    <div class="detail-value" id="pipValue">$0.00</div>
                 </div>
                 <div class="detail-card">
-                    <div class="detail-label">Loss per Pip</div>
-                    <div class="detail-value" id="lossPerPip">$5.00</div>
+                    <div class="detail-label">Pip Value</div>
+                    <div class="detail-value" id="positionPipValue">$0.00</div>
                 </div>
                 <div class="detail-card">
                     <div class="detail-label">Total Stop Loss</div>
-                    <div class="detail-value" id="stopLossValue">$100.00</div>
+                    <div class="detail-value" id="stopLossValue">$0.00</div>
                 </div>
             </div>
             
@@ -353,7 +376,7 @@
             <p style="margin-top: 10px;">
                 <a href="https://structuretradelab.com">Home</a> | 
                 <a href="https://blog.structuretradelab.com">Blog</a> | 
-                <a href="/">Tools</a> |
+                <a href="https://tools.structuretradelab.com">Tools</a> |
                 <a href="https://structuretradelab.com/about">About</a>
             </p>
         </div>
@@ -369,44 +392,27 @@
         const priceLabel = document.getElementById('priceLabel');
         const priceHelper = document.getElementById('priceHelper');
         const currentPriceInput = document.getElementById('currentPrice');
+        const resetBtn = document.getElementById('resetBtn');
         
         const positionSizeSpan = document.getElementById('positionSize');
         const positionUnitsSpan = document.getElementById('positionUnits');
         const riskAmountSpan = document.getElementById('riskAmount');
         const pipValueSpan = document.getElementById('pipValue');
-        const lossPerPipSpan = document.getElementById('lossPerPip');
+        const positionPipValueSpan = document.getElementById('positionPipValue');
         const stopLossValueSpan = document.getElementById('stopLossValue');
         
         const copyBtn = document.getElementById('copyBtn');
         const copySuccessDiv = document.getElementById('copySuccess');
         
-        // Helper: Get pip size (0.0001 for most, 0.01 for JPY pairs)
-        function getPipSize(pair) {
-            const jpyPairs = ['USDJPY', 'GBPJPY', 'EURJPY'];
-            if (jpyPairs.includes(pair)) return 0.01;
-            return 0.0001;
-        }
+        // Default values
+        const DEFAULTS = {
+            balance: 10000,
+            riskPercent: 1,
+            stopLossPips: 20,
+            currencyPair: 'EURUSD',
+            currentPrice: null
+        };
         
-        // Helper: Get quote currency
-        function getQuoteCurrency(pair) {
-            if (pair === 'EURUSD' || pair === 'GBPUSD' || pair === 'AUDUSD' || 
-                pair === 'NZDUSD' || pair === 'XAUUSD') return 'USD';
-            if (pair === 'USDJPY') return 'JPY';
-            if (pair === 'USDCHF') return 'CHF';
-            if (pair === 'USDCAD') return 'CAD';
-            if (pair === 'GBPJPY' || pair === 'EURJPY') return 'JPY';
-            if (pair === 'EURGBP') return 'GBP';
-            return 'USD';
-        }
-        
-        // Check if current price is needed for pip value calculation
-        function needsCurrentPrice(pair) {
-            // Pairs where quote currency is NOT USD (need conversion)
-            const needsPrice = ['USDJPY', 'USDCHF', 'USDCAD', 'GBPJPY', 'EURJPY', 'EURGBP'];
-            return needsPrice.includes(pair);
-        }
-        
-        // Set default prices based on pair (reasonable approximations)
         function getDefaultPrice(pair) {
             const defaults = {
                 'USDJPY': 150.50,
@@ -419,7 +425,75 @@
             return defaults[pair] || 1;
         }
         
-        // Update UI based on selected pair
+        function saveSettings() {
+            const settings = {
+                balance: balanceInput.value,
+                riskPercent: riskPercentInput.value,
+                stopLossPips: stopLossInput.value,
+                currencyPair: currencySelect.value,
+                currentPrice: currentPriceInput.value
+            };
+            localStorage.setItem('positionSizeCalculator', JSON.stringify(settings));
+        }
+        
+        function loadSettings() {
+            const saved = localStorage.getItem('positionSizeCalculator');
+            if (saved) {
+                try {
+                    const settings = JSON.parse(saved);
+                    if (settings.balance) balanceInput.value = settings.balance;
+                    if (settings.riskPercent) riskPercentInput.value = settings.riskPercent;
+                    if (settings.stopLossPips) stopLossInput.value = settings.stopLossPips;
+                    if (settings.currencyPair) currencySelect.value = settings.currencyPair;
+                    if (settings.currentPrice) currentPriceInput.value = settings.currentPrice;
+                    return true;
+                } catch (e) {
+                    console.log('Error loading settings');
+                }
+            }
+            return false;
+        }
+        
+        function resetToDefaults() {
+            balanceInput.value = DEFAULTS.balance;
+            riskPercentInput.value = DEFAULTS.riskPercent;
+            stopLossInput.value = DEFAULTS.stopLossPips;
+            currencySelect.value = DEFAULTS.currencyPair;
+            
+            const pair = currencySelect.value;
+            if (needsCurrentPrice(pair)) {
+                currentPriceInput.value = getDefaultPrice(pair);
+            } else {
+                currentPriceInput.value = '';
+            }
+            
+            updatePriceInputVisibility();
+            updateCalculator();
+            saveSettings();
+        }
+        
+        function getPipSize(pair) {
+            const jpyPairs = ['USDJPY', 'GBPJPY', 'EURJPY'];
+            if (jpyPairs.includes(pair)) return 0.01;
+            return 0.0001;
+        }
+        
+        function getQuoteCurrency(pair) {
+            if (pair === 'EURUSD' || pair === 'GBPUSD' || pair === 'AUDUSD' || 
+                pair === 'NZDUSD' || pair === 'XAUUSD') return 'USD';
+            if (pair === 'USDJPY') return 'JPY';
+            if (pair === 'USDCHF') return 'CHF';
+            if (pair === 'USDCAD') return 'CAD';
+            if (pair === 'GBPJPY' || pair === 'EURJPY') return 'JPY';
+            if (pair === 'EURGBP') return 'GBP';
+            return 'USD';
+        }
+        
+        function needsCurrentPrice(pair) {
+            const needsPrice = ['USDJPY', 'USDCHF', 'USDCAD', 'GBPJPY', 'EURJPY', 'EURGBP'];
+            return needsPrice.includes(pair);
+        }
+        
         function updatePriceInputVisibility() {
             const pair = currencySelect.value;
             const needsPrice = needsCurrentPrice(pair);
@@ -427,86 +501,71 @@
             if (needsPrice) {
                 priceInputGroup.style.display = 'block';
                 
-                // Update label and helper text
                 if (pair === 'USDJPY' || pair === 'GBPJPY' || pair === 'EURJPY') {
                     priceLabel.innerHTML = '💰 USD/JPY Current Rate';
-                    priceHelper.innerHTML = 'Example: 150.50 (1 USD = 150.50 JPY)';
+                    priceHelper.innerHTML = 'Example: 150.50 (1 USD = 150.50 JPY) - saved automatically';
                     currentPriceInput.step = '0.01';
                     currentPriceInput.placeholder = 'Enter USD/JPY rate';
                 } else if (pair === 'USDCHF') {
                     priceLabel.innerHTML = '💰 USD/CHF Current Rate';
-                    priceHelper.innerHTML = 'Example: 0.8900 (1 USD = 0.8900 CHF)';
+                    priceHelper.innerHTML = 'Example: 0.8900 (1 USD = 0.8900 CHF) - saved automatically';
                     currentPriceInput.step = '0.0001';
                     currentPriceInput.placeholder = 'Enter USD/CHF rate';
                 } else if (pair === 'USDCAD') {
                     priceLabel.innerHTML = '💰 USD/CAD Current Rate';
-                    priceHelper.innerHTML = 'Example: 1.3750 (1 USD = 1.3750 CAD)';
+                    priceHelper.innerHTML = 'Example: 1.3750 (1 USD = 1.3750 CAD) - saved automatically';
                     currentPriceInput.step = '0.0001';
                     currentPriceInput.placeholder = 'Enter USD/CAD rate';
                 } else if (pair === 'EURGBP') {
                     priceLabel.innerHTML = '💰 EUR/GBP Current Rate';
-                    priceHelper.innerHTML = 'Example: 0.8500 (1 EUR = 0.8500 GBP)';
+                    priceHelper.innerHTML = 'Example: 0.8500 (1 EUR = 0.8500 GBP) - saved automatically';
                     currentPriceInput.step = '0.0001';
                     currentPriceInput.placeholder = 'Enter EUR/GBP rate';
                 } else if (pair === 'GBPJPY') {
                     priceLabel.innerHTML = '💰 GBP/JPY Current Rate';
-                    priceHelper.innerHTML = 'Example: 190.00 (1 GBP = 190.00 JPY)';
+                    priceHelper.innerHTML = 'Example: 190.00 (1 GBP = 190.00 JPY) - saved automatically';
                     currentPriceInput.step = '0.01';
                     currentPriceInput.placeholder = 'Enter GBP/JPY rate';
                 } else if (pair === 'EURJPY') {
                     priceLabel.innerHTML = '💰 EUR/JPY Current Rate';
-                    priceHelper.innerHTML = 'Example: 162.00 (1 EUR = 162.00 JPY)';
+                    priceHelper.innerHTML = 'Example: 162.00 (1 EUR = 162.00 JPY) - saved automatically';
                     currentPriceInput.step = '0.01';
                     currentPriceInput.placeholder = 'Enter EUR/JPY rate';
                 }
                 
-                // Set default value if empty
                 if (!currentPriceInput.value) {
                     currentPriceInput.value = getDefaultPrice(pair);
                 }
             } else {
                 priceInputGroup.style.display = 'none';
             }
-            updateCalculator();
         }
         
-        // Calculate pip value in USD for 1 standard lot (100,000 units)
         function calculatePipValue(pair) {
             const pipSize = getPipSize(pair);
             const quoteCurrency = getQuoteCurrency(pair);
             
-            // If quote currency is USD, pip value is fixed
             if (quoteCurrency === 'USD') {
                 return 100000 * pipSize;
             }
             
-            // Need current price to convert
             let currentPrice = parseFloat(currentPriceInput.value);
             if (isNaN(currentPrice) || currentPrice <= 0) {
                 currentPrice = getDefaultPrice(pair);
                 currentPriceInput.value = currentPrice;
             }
             
-            // Pip value in quote currency
             let pipValueInQuote = 100000 * pipSize;
             
-            // Convert to USD based on pair type
             if (pair === 'USDJPY' || pair === 'USDCHF' || pair === 'USDCAD') {
-                // For USD/XXX, divide by rate
                 return pipValueInQuote / currentPrice;
             } else if (pair === 'GBPJPY' || pair === 'EURJPY') {
-                // For XXX/JPY, need to convert via USD
-                // This is more complex - approximate using USD/JPY rate
-                // For simplicity, use USD/JPY rate
-                const usdjpy = document.getElementById('usdjpyRate')?.value || 150.5;
-                return pipValueInQuote / usdjpy;
+                return pipValueInQuote / 150.5;
             } else if (pair === 'EURGBP') {
-                // For EUR/GBP, convert GBP to USD
-                // Requires GBP/USD rate - approximate
-                return pipValueInQuote * 1.27; // Approx GBP/USD = 1.27
+                return pipValueInQuote * 1.27;
             }
             
-            return 10; // fallback
+            return 10;
         }
         
         function updateCalculator() {
@@ -528,29 +587,36 @@
             lots = Math.round(lots * 100) / 100;
             
             let units = lots * 100000;
-            let lossPerPip = lots * pipValuePerLot;
-            let totalStopLoss = stopLossPips * lossPerPip;
+            let positionPipValue = lots * pipValuePerLot;
+            let totalStopLoss = stopLossPips * positionPipValue;
             
             positionSizeSpan.innerText = lots.toFixed(2);
             positionUnitsSpan.innerText = `≈ ${Math.round(units).toLocaleString()} units`;
             riskAmountSpan.innerText = `$${riskAmountUSD.toFixed(2)}`;
             pipValueSpan.innerText = `$${pipValuePerLot.toFixed(2)}`;
-            lossPerPipSpan.innerText = `$${lossPerPip.toFixed(2)}`;
+            positionPipValueSpan.innerText = `$${positionPipValue.toFixed(2)}`;
             stopLossValueSpan.innerText = `$${totalStopLoss.toFixed(2)}`;
         }
         
+        function handleChange() {
+            updateCalculator();
+            saveSettings();
+        }
+        
         // Event listeners
-        balanceInput.addEventListener('input', updateCalculator);
-        riskPercentInput.addEventListener('input', updateCalculator);
-        stopLossInput.addEventListener('input', updateCalculator);
+        balanceInput.addEventListener('input', handleChange);
+        riskPercentInput.addEventListener('input', handleChange);
+        stopLossInput.addEventListener('input', handleChange);
         currencySelect.addEventListener('change', () => {
             updatePriceInputVisibility();
-            updateCalculator();
+            handleChange();
         });
         
         if (currentPriceInput) {
-            currentPriceInput.addEventListener('input', updateCalculator);
+            currentPriceInput.addEventListener('input', handleChange);
         }
+        
+        resetBtn.addEventListener('click', resetToDefaults);
         
         copyBtn.addEventListener('click', function() {
             let resultText = positionSizeSpan.innerText + ' lots';
@@ -563,8 +629,14 @@
         });
         
         // Initialize
-        updatePriceInputVisibility();
-        updateCalculator();
+        const loaded = loadSettings();
+        if (!loaded) {
+            resetToDefaults();
+        } else {
+            updatePriceInputVisibility();
+            updateCalculator();
+        }
+        
         document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
