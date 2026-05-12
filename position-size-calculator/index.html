@@ -15,9 +15,42 @@
     <meta name="description" content="Free forex position size calculator. Calculate exact lot size based on account balance, risk percentage, stop loss in pips, and live market prices. Saves your settings automatically.">
     <meta name="keywords" content="position size calculator, forex lot size calculator, risk management tool, forex calculator">
     <title>Position Size Calculator — Forex Risk Management Tool | Structure Trade Lab</title>
-    <link rel="stylesheet" href="https://structuretradelab.com/assets/css/style.css">
+    <link rel="stylesheet" href="https://structuretradelab.com/assets/css/common.css">
     
     <style>
+        /* ============================================
+           POSITION SIZE CALCULATOR STYLES
+           ============================================ */
+        
+        .tools-hero {
+            background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        .tools-hero h1 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+        
+        .tools-hero p {
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #cce4f0;
+        }
+        
+        /* Dark mode tools hero */
+        body.dark-mode .tools-hero {
+            background: linear-gradient(135deg, #0a0f1a 0%, #0d1f2d 100%);
+        }
+        
+        body.dark-mode .tools-hero p {
+            color: #8b949e;
+        }
+        
         .calculator-container {
             max-width: 700px;
             margin: 40px auto;
@@ -26,6 +59,13 @@
             padding: 30px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.08);
             border: 1px solid #e0e0e0;
+            transition: background 0.3s ease, border-color 0.3s ease;
+        }
+        
+        body.dark-mode .calculator-container {
+            background: #121724;
+            border-color: #1f2a3a;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
         }
         
         .calc-title {
@@ -37,11 +77,20 @@
             font-size: 1.8rem;
             color: #0a2540;
             margin-bottom: 8px;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .calc-title h1 {
+            color: #f0f3f8;
         }
         
         .calc-title p {
             color: #4a5568;
             font-size: 0.9rem;
+        }
+        
+        body.dark-mode .calc-title p {
+            color: #c9d1d9;
         }
         
         .input-group {
@@ -54,6 +103,11 @@
             color: #0a2540;
             margin-bottom: 8px;
             font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+        
+        body.dark-mode .input-group label {
+            color: #f0f3f8;
         }
         
         .input-group input,
@@ -68,6 +122,13 @@
             font-family: inherit;
         }
         
+        body.dark-mode .input-group input,
+        body.dark-mode .input-group select {
+            background: #0d1117;
+            border-color: #1f2a3a;
+            color: #f0f3f8;
+        }
+        
         .input-group input:focus,
         .input-group select:focus {
             outline: none;
@@ -79,6 +140,10 @@
             font-size: 0.7rem;
             color: #6c757d;
             margin-top: 5px;
+        }
+        
+        body.dark-mode .input-group .helper-text {
+            color: #8b949e;
         }
         
         .input-row {
@@ -98,6 +163,12 @@
             border: 1px solid #cce4f0;
         }
         
+        body.dark-mode .account-note {
+            background: #1a2332;
+            color: #c9d1d9;
+            border-color: #1f2a3a;
+        }
+        
         .result-box {
             background: #0a2540;
             border-radius: 20px;
@@ -106,12 +177,20 @@
             margin: 30px 0 20px;
         }
         
+        body.dark-mode .result-box {
+            background: #0a0f1a;
+        }
+        
         .result-label {
             color: #a0c4e2;
             font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 10px;
+        }
+        
+        body.dark-mode .result-label {
+            color: #8b949e;
         }
         
         .result-value {
@@ -127,6 +206,10 @@
             font-size: 0.85rem;
         }
         
+        body.dark-mode .result-sub {
+            color: #8b949e;
+        }
+        
         .details-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
@@ -139,6 +222,11 @@
             border-radius: 12px;
             padding: 12px;
             text-align: center;
+            transition: background 0.3s ease;
+        }
+        
+        body.dark-mode .detail-card {
+            background: #1a2332;
         }
         
         .detail-label {
@@ -149,10 +237,18 @@
             margin-bottom: 4px;
         }
         
+        body.dark-mode .detail-label {
+            color: #8b949e;
+        }
+        
         .detail-value {
             font-size: 0.9rem;
             font-weight: bold;
             color: #0a2540;
+        }
+        
+        body.dark-mode .detail-value {
+            color: #f0f3f8;
         }
         
         .copy-btn {
@@ -171,6 +267,15 @@
         .copy-btn:hover {
             background: #0096b8;
             transform: translateY(-2px);
+        }
+        
+        body.dark-mode .copy-btn {
+            background: #58c4dd;
+            color: #0a0f1a;
+        }
+        
+        body.dark-mode .copy-btn:hover {
+            background: #7cd4e8;
         }
         
         .copy-success {
@@ -199,6 +304,17 @@
             color: #0a2540;
         }
         
+        body.dark-mode .reset-btn {
+            border-color: #1f2a3a;
+            color: #8b949e;
+        }
+        
+        body.dark-mode .reset-btn:hover {
+            background: #1a2332;
+            border-color: #58c4dd;
+            color: #f0f3f8;
+        }
+        
         .info-text {
             background: #e8f4f8;
             padding: 15px;
@@ -207,6 +323,12 @@
             font-size: 0.8rem;
             color: #2c3e4e;
             border-left: 4px solid #00b4d8;
+        }
+        
+        body.dark-mode .info-text {
+            background: #1a2332;
+            color: #c9d1d9;
+            border-left-color: #58c4dd;
         }
         
         .info-text a {
@@ -218,6 +340,81 @@
             text-decoration: underline;
         }
         
+        body.dark-mode .info-text a {
+            color: #58c4dd;
+        }
+        
+        /* Blog CTA styles (already in common.css but ensuring consistency) */
+        .blog-cta {
+            background: #e8f4f8;
+            text-align: center;
+            padding: 40px;
+            border-radius: 16px;
+            margin: 50px 0;
+        }
+        
+        body.dark-mode .blog-cta {
+            background: #1a2332;
+        }
+        
+        .blog-cta h3 {
+            color: #0a2540;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        body.dark-mode .blog-cta h3 {
+            color: #f0f3f8;
+        }
+        
+        .blog-cta p {
+            color: #4a5568;
+            margin-bottom: 20px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        body.dark-mode .blog-cta p {
+            color: #c9d1d9;
+        }
+        
+        .blog-cta .btn {
+            display: inline-block;
+            background: #00b4d8;
+            color: #0a2540;
+            padding: 12px 28px;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+        
+        .blog-cta .btn:hover {
+            background: #0096b8;
+            transform: translateY(-2px);
+        }
+        
+        body.dark-mode .blog-cta .btn {
+            background: #58c4dd;
+            color: #0a0f1a;
+        }
+        
+        body.dark-mode .blog-cta .btn:hover {
+            background: #7cd4e8;
+        }
+        
+        .blog-cta .disclosure-small {
+            font-size: 0.7rem;
+            color: #6c757d;
+            margin-top: 15px;
+        }
+        
+        body.dark-mode .blog-cta .disclosure-small {
+            color: #8b949e;
+        }
+        
+        /* Responsive */
         @media (max-width: 700px) {
             .details-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -238,20 +435,50 @@
                 grid-template-columns: 1fr;
                 gap: 0;
             }
+            
+            .tools-hero h1 {
+                font-size: 1.6rem;
+            }
+            
+            .blog-cta {
+                padding: 25px;
+                margin: 30px 15px;
+            }
+            
+            .blog-cta h3 {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
         <div class="container header-flex">
             <div class="logo">
-                <a href="https://tools.structuretradelab.com">
-                    <h1>🔧 Structure Trade Lab</h1>
-                    <p>Free tools for smarter trading</p>
+                <a href="https://structuretradelab.com">
+                    <h1>📊 Structure Trade Lab</h1>
+                    <p>Trade with Structure. Trade with a Plan.</p>
                 </a>
             </div>
-            <nav>
+            
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <!-- Dark Mode Toggle Button -->
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Dark mode">
+                    <span class="toggle-icon">🌙</span>
+                    <span class="toggle-text">Dark</span>
+                </button>
+                
+                <!-- Hamburger Button -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+            
+            <nav id="mainNav">
                 <a href="https://structuretradelab.com">Home</a>
                 <a href="https://blog.structuretradelab.com">Blog</a>
                 <a href="/">Tools</a>
@@ -259,8 +486,12 @@
             </nav>
         </div>
     </header>
+    
+    <!-- Overlay for mobile menu -->
+    <div class="menu-overlay" id="menuOverlay"></div>
 
-    <div class="tools-hero" style="padding: 40px 0;">
+    <!-- TOOLS HERO -->
+    <div class="tools-hero">
         <div class="container">
             <h1>📐 Position Size Calculator</h1>
             <p>Calculate the exact lot size based on your risk rules and live market prices. Your settings are saved automatically.</p>
@@ -280,17 +511,17 @@
             
             <div class="input-group">
                 <label>💰 Account Balance (USD)</label>
-                <input type="number" id="balance" step="100" placeholder="Enter account balance in USD">
+                <input type="number" id="balance" step="100" placeholder="Enter account balance in USD" value="10000">
             </div>
             
             <div class="input-row">
                 <div class="input-group">
                     <label>⚠️ Risk Percentage (%)</label>
-                    <input type="number" id="riskPercent" step="0.5" placeholder="Risk per trade">
+                    <input type="number" id="riskPercent" step="0.5" placeholder="Risk per trade" value="1">
                 </div>
                 <div class="input-group">
                     <label>📉 Stop Loss (pips)</label>
-                    <input type="number" id="stopLossPips" step="1" placeholder="Stop loss in pips">
+                    <input type="number" id="stopLossPips" step="1" placeholder="Stop loss in pips" value="20">
                 </div>
             </div>
             
@@ -383,7 +614,88 @@
     </footer>
 
     <script>
-        // DOM elements
+        // Dark mode toggle functionality
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const toggleIcon = darkModeToggle ? darkModeToggle.querySelector('.toggle-icon') : null;
+        const toggleText = darkModeToggle ? darkModeToggle.querySelector('.toggle-text') : null;
+        
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.body.classList.add('dark-mode');
+            if (toggleIcon) toggleIcon.textContent = '☀️';
+            if (toggleText) toggleText.textContent = 'Light';
+        } else {
+            document.body.classList.remove('dark-mode');
+            if (toggleIcon) toggleIcon.textContent = '🌙';
+            if (toggleText) toggleText.textContent = 'Dark';
+        }
+        
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('click', () => {
+                if (document.body.classList.contains('dark-mode')) {
+                    document.body.classList.remove('dark-mode');
+                    localStorage.setItem('theme', 'light');
+                    if (toggleIcon) toggleIcon.textContent = '🌙';
+                    if (toggleText) toggleText.textContent = 'Dark';
+                } else {
+                    document.body.classList.add('dark-mode');
+                    localStorage.setItem('theme', 'dark');
+                    if (toggleIcon) toggleIcon.textContent = '☀️';
+                    if (toggleText) toggleText.textContent = 'Light';
+                }
+            });
+        }
+        
+        // Smart header hide/show
+        const header = document.querySelector('header');
+        let lastScrollY = window.scrollY;
+        let ticking = false;
+        
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    requestAnimationFrame(() => {
+                        const currentScrollY = window.scrollY;
+                        if (currentScrollY <= 10) {
+                            header.style.transform = 'translateY(0)';
+                        } else if (currentScrollY > lastScrollY && currentScrollY > 70) {
+                            header.style.transform = 'translateY(-100%)';
+                        } else if (currentScrollY < lastScrollY) {
+                            header.style.transform = 'translateY(0)';
+                        }
+                        lastScrollY = currentScrollY;
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            });
+        }
+        
+        // Hamburger menu
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const mainNav = document.getElementById('mainNav');
+        const menuOverlay = document.getElementById('menuOverlay');
+        
+        function toggleMenu() {
+            if (hamburgerBtn) hamburgerBtn.classList.toggle('active');
+            if (mainNav) mainNav.classList.toggle('active');
+            if (menuOverlay) menuOverlay.classList.toggle('active');
+            document.body.style.overflow = mainNav && mainNav.classList.contains('active') ? 'hidden' : '';
+        }
+        
+        if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+        if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
+        if (mainNav) {
+            document.querySelectorAll('#mainNav a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mainNav.classList.contains('active')) toggleMenu();
+                });
+            });
+        }
+        
+        // DOM elements for calculator
         const balanceInput = document.getElementById('balance');
         const riskPercentInput = document.getElementById('riskPercent');
         const stopLossInput = document.getElementById('stopLossPips');
