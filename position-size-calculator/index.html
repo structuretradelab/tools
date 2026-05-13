@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9HB3LHNF2W"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-9HB3LHNF2W');
-    </script>
-
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Free forex position size calculator. Calculate exact lot size based on account balance, risk percentage, stop loss in pips, and live market prices. Saves your settings automatically.">
     <meta name="keywords" content="position size calculator, forex lot size calculator, risk management tool, forex calculator">
     <title>Position Size Calculator — Forex Risk Management Tool | Structure Trade Lab</title>
+
+    <!-- PREVENT FLASH OF LIGHT IN DARK MODE -->
+     <script>
+     (function() {
+        const savedTheme = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+            document.documentElement.classList.add('dark-mode');
+        }
+        })();
+        </script>
+
     <link rel="stylesheet" href="https://structuretradelab.com/assets/css/common.css">
     
     <style>
@@ -42,7 +46,6 @@
             color: #cce4f0;
         }
         
-        /* Dark mode tools hero */
         body.dark-mode .tools-hero {
             background: linear-gradient(135deg, #0a0f1a 0%, #0d1f2d 100%);
         }
@@ -344,7 +347,6 @@
             color: #58c4dd;
         }
         
-        /* Blog CTA styles (already in common.css but ensuring consistency) */
         .blog-cta {
             background: #e8f4f8;
             text-align: center;
@@ -414,7 +416,6 @@
             color: #8b949e;
         }
         
-        /* Responsive */
         @media (max-width: 700px) {
             .details-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -464,13 +465,10 @@
             </div>
             
             <div style="display: flex; align-items: center; gap: 15px;">
-                <!-- Dark Mode Toggle Button -->
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Dark mode">
                     <span class="toggle-icon">🌙</span>
                     <span class="toggle-text">Dark</span>
                 </button>
-                
-                <!-- Hamburger Button -->
                 <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
                     <span></span>
                     <span></span>
@@ -487,7 +485,6 @@
         </div>
     </header>
     
-    <!-- Overlay for mobile menu -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- TOOLS HERO -->
@@ -542,7 +539,6 @@
                 </select>
             </div>
             
-            <!-- Dynamic price input field -->
             <div class="input-group" id="priceInputGroup" style="display: none;">
                 <label id="priceLabel">💰 Current Market Price</label>
                 <input type="number" id="currentPrice" step="0.0001" placeholder="Enter current price">
@@ -613,88 +609,11 @@
         </div>
     </footer>
 
+    <!-- Common JavaScript -->
+    <script src="https://structuretradelab.com/assets/js/common.js" defer></script>
+    
+    <!-- Calculator Specific JavaScript -->
     <script>
-        // Dark mode toggle functionality
-        const darkModeToggle = document.getElementById('darkModeToggle');
-        const toggleIcon = darkModeToggle ? darkModeToggle.querySelector('.toggle-icon') : null;
-        const toggleText = darkModeToggle ? darkModeToggle.querySelector('.toggle-text') : null;
-        
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            document.body.classList.add('dark-mode');
-            if (toggleIcon) toggleIcon.textContent = '☀️';
-            if (toggleText) toggleText.textContent = 'Light';
-        } else {
-            document.body.classList.remove('dark-mode');
-            if (toggleIcon) toggleIcon.textContent = '🌙';
-            if (toggleText) toggleText.textContent = 'Dark';
-        }
-        
-        if (darkModeToggle) {
-            darkModeToggle.addEventListener('click', () => {
-                if (document.body.classList.contains('dark-mode')) {
-                    document.body.classList.remove('dark-mode');
-                    localStorage.setItem('theme', 'light');
-                    if (toggleIcon) toggleIcon.textContent = '🌙';
-                    if (toggleText) toggleText.textContent = 'Dark';
-                } else {
-                    document.body.classList.add('dark-mode');
-                    localStorage.setItem('theme', 'dark');
-                    if (toggleIcon) toggleIcon.textContent = '☀️';
-                    if (toggleText) toggleText.textContent = 'Light';
-                }
-            });
-        }
-        
-        // Smart header hide/show
-        const header = document.querySelector('header');
-        let lastScrollY = window.scrollY;
-        let ticking = false;
-        
-        if (header) {
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    requestAnimationFrame(() => {
-                        const currentScrollY = window.scrollY;
-                        if (currentScrollY <= 10) {
-                            header.style.transform = 'translateY(0)';
-                        } else if (currentScrollY > lastScrollY && currentScrollY > 70) {
-                            header.style.transform = 'translateY(-100%)';
-                        } else if (currentScrollY < lastScrollY) {
-                            header.style.transform = 'translateY(0)';
-                        }
-                        lastScrollY = currentScrollY;
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            });
-        }
-        
-        // Hamburger menu
-        const hamburgerBtn = document.getElementById('hamburgerBtn');
-        const mainNav = document.getElementById('mainNav');
-        const menuOverlay = document.getElementById('menuOverlay');
-        
-        function toggleMenu() {
-            if (hamburgerBtn) hamburgerBtn.classList.toggle('active');
-            if (mainNav) mainNav.classList.toggle('active');
-            if (menuOverlay) menuOverlay.classList.toggle('active');
-            document.body.style.overflow = mainNav && mainNav.classList.contains('active') ? 'hidden' : '';
-        }
-        
-        if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
-        if (menuOverlay) menuOverlay.addEventListener('click', toggleMenu);
-        if (mainNav) {
-            document.querySelectorAll('#mainNav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mainNav.classList.contains('active')) toggleMenu();
-                });
-            });
-        }
-        
         // DOM elements for calculator
         const balanceInput = document.getElementById('balance');
         const riskPercentInput = document.getElementById('riskPercent');
@@ -948,8 +867,6 @@
             updatePriceInputVisibility();
             updateCalculator();
         }
-        
-        document.getElementById('current-year').textContent = new Date().getFullYear();
     </script>
 </body>
 </html>
