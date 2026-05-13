@@ -1,105 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free forex position size calculator. Calculate exact lot size based on account balance, risk percentage, stop loss in pips, and live market prices. Saves your settings automatically.">
-    <meta name="keywords" content="position size calculator, forex lot size calculator, risk management tool, forex calculator">
+    <meta name="description"
+        content="Free forex position size calculator. Calculate exact lot size based on account balance, risk percentage, stop loss in pips, and live market prices. Saves your settings automatically.">
+    <meta name="keywords"
+        content="position size calculator, forex lot size calculator, risk management tool, forex calculator">
     <title>Position Size Calculator — Forex Risk Management Tool | Structure Trade Lab</title>
 
     <!-- PREVENT FLASH OF LIGHT IN DARK MODE -->
-     <script>
-     (function() {
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-            document.documentElement.classList.add('dark-mode');
-        }
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark-mode');
+            }
         })();
-        </script>
+    </script>
 
     <link rel="stylesheet" href="https://structuretradelab.com/assets/css/common.css">
-    
+
     <style>
         /* ============================================
            POSITION SIZE CALCULATOR STYLES
            ============================================ */
-        
+
         .tools-hero {
             background: linear-gradient(135deg, #0a2540 0%, #1a3a5c 100%);
             color: white;
             padding: 40px 0;
             text-align: center;
         }
-        
+
         .tools-hero h1 {
             font-size: 2.2rem;
             margin-bottom: 15px;
             color: white;
         }
-        
+
         .tools-hero p {
             font-size: 1rem;
             max-width: 600px;
             margin: 0 auto;
             color: #cce4f0;
         }
-        
-        body.dark-mode .tools-hero {
+
+        html.dark-mode .tools-hero {
             background: linear-gradient(135deg, #0a0f1a 0%, #0d1f2d 100%);
         }
-        
-        body.dark-mode .tools-hero p {
+
+        html.dark-mode .tools-hero p {
             color: #8b949e;
         }
-        
+
         .calculator-container {
             max-width: 700px;
             margin: 40px auto;
             background: white;
             border-radius: 24px;
             padding: 30px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
             border: 1px solid #e0e0e0;
             transition: background 0.3s ease, border-color 0.3s ease;
         }
-        
-        body.dark-mode .calculator-container {
+
+        html.dark-mode .calculator-container {
             background: #121724;
             border-color: #1f2a3a;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
-        
+
         .calc-title {
             text-align: center;
             margin-bottom: 30px;
         }
-        
+
         .calc-title h1 {
             font-size: 1.8rem;
             color: #0a2540;
             margin-bottom: 8px;
             transition: color 0.3s ease;
         }
-        
-        body.dark-mode .calc-title h1 {
+
+        html.dark-mode .calc-title h1 {
             color: #f0f3f8;
         }
-        
+
         .calc-title p {
             color: #4a5568;
             font-size: 0.9rem;
         }
-        
-        body.dark-mode .calc-title p {
+
+        html.dark-mode .calc-title p {
             color: #c9d1d9;
         }
-        
+
         .input-group {
             margin-bottom: 22px;
         }
-        
+
         .input-group label {
             display: block;
             font-weight: 600;
@@ -108,11 +111,11 @@
             font-size: 0.9rem;
             transition: color 0.3s ease;
         }
-        
-        body.dark-mode .input-group label {
+
+        html.dark-mode .input-group label {
             color: #f0f3f8;
         }
-        
+
         .input-group input,
         .input-group select {
             width: 100%;
@@ -124,37 +127,37 @@
             background: white;
             font-family: inherit;
         }
-        
-        body.dark-mode .input-group input,
-        body.dark-mode .input-group select {
+
+        html.dark-mode .input-group input,
+        html.dark-mode .input-group select {
             background: #0d1117;
             border-color: #1f2a3a;
             color: #f0f3f8;
         }
-        
+
         .input-group input:focus,
         .input-group select:focus {
             outline: none;
             border-color: #00b4d8;
-            box-shadow: 0 0 0 3px rgba(0,180,216,0.1);
+            box-shadow: 0 0 0 3px rgba(0, 180, 216, 0.1);
         }
-        
+
         .input-group .helper-text {
             font-size: 0.7rem;
             color: #6c757d;
             margin-top: 5px;
         }
-        
-        body.dark-mode .input-group .helper-text {
+
+        html.dark-mode .input-group .helper-text {
             color: #8b949e;
         }
-        
+
         .input-row {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
         }
-        
+
         .account-note {
             background: #e8f4f8;
             border-radius: 10px;
@@ -165,13 +168,13 @@
             text-align: center;
             border: 1px solid #cce4f0;
         }
-        
-        body.dark-mode .account-note {
+
+        html.dark-mode .account-note {
             background: #1a2332;
             color: #c9d1d9;
             border-color: #1f2a3a;
         }
-        
+
         .result-box {
             background: #0a2540;
             border-radius: 20px;
@@ -179,11 +182,11 @@
             text-align: center;
             margin: 30px 0 20px;
         }
-        
-        body.dark-mode .result-box {
+
+        html.dark-mode .result-box {
             background: #0a0f1a;
         }
-        
+
         .result-label {
             color: #a0c4e2;
             font-size: 0.8rem;
@@ -191,11 +194,11 @@
             letter-spacing: 1px;
             margin-bottom: 10px;
         }
-        
-        body.dark-mode .result-label {
+
+        html.dark-mode .result-label {
             color: #8b949e;
         }
-        
+
         .result-value {
             color: white;
             font-size: 2.5rem;
@@ -203,23 +206,23 @@
             line-height: 1.2;
             margin-bottom: 8px;
         }
-        
+
         .result-sub {
             color: #cce4f0;
             font-size: 0.85rem;
         }
-        
-        body.dark-mode .result-sub {
+
+        html.dark-mode .result-sub {
             color: #8b949e;
         }
-        
+
         .details-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         .detail-card {
             background: #f8f9fa;
             border-radius: 12px;
@@ -227,11 +230,11 @@
             text-align: center;
             transition: background 0.3s ease;
         }
-        
-        body.dark-mode .detail-card {
+
+        html.dark-mode .detail-card {
             background: #1a2332;
         }
-        
+
         .detail-label {
             font-size: 0.65rem;
             color: #6c757d;
@@ -239,21 +242,21 @@
             letter-spacing: 0.5px;
             margin-bottom: 4px;
         }
-        
-        body.dark-mode .detail-label {
+
+        html.dark-mode .detail-label {
             color: #8b949e;
         }
-        
+
         .detail-value {
             font-size: 0.9rem;
             font-weight: bold;
             color: #0a2540;
         }
-        
-        body.dark-mode .detail-value {
+
+        html.dark-mode .detail-value {
             color: #f0f3f8;
         }
-        
+
         .copy-btn {
             background: #00b4d8;
             color: #0a2540;
@@ -266,21 +269,21 @@
             width: 100%;
             font-size: 0.9rem;
         }
-        
+
         .copy-btn:hover {
             background: #0096b8;
             transform: translateY(-2px);
         }
-        
-        body.dark-mode .copy-btn {
+
+        html.dark-mode .copy-btn {
             background: #58c4dd;
             color: #0a0f1a;
         }
-        
-        body.dark-mode .copy-btn:hover {
+
+        html.dark-mode .copy-btn:hover {
             background: #7cd4e8;
         }
-        
+
         .copy-success {
             text-align: center;
             margin-top: 12px;
@@ -288,7 +291,7 @@
             color: #2ecc71;
             display: none;
         }
-        
+
         .reset-btn {
             background: transparent;
             border: 1px solid #dce4ec;
@@ -300,24 +303,24 @@
             margin-top: 15px;
             transition: all 0.2s;
         }
-        
+
         .reset-btn:hover {
             background: #f0f4f8;
             border-color: #00b4d8;
             color: #0a2540;
         }
-        
-        body.dark-mode .reset-btn {
+
+        html.dark-mode .reset-btn {
             border-color: #1f2a3a;
             color: #8b949e;
         }
-        
-        body.dark-mode .reset-btn:hover {
+
+        html.dark-mode .reset-btn:hover {
             background: #1a2332;
             border-color: #58c4dd;
             color: #f0f3f8;
         }
-        
+
         .info-text {
             background: #e8f4f8;
             padding: 15px;
@@ -327,26 +330,26 @@
             color: #2c3e4e;
             border-left: 4px solid #00b4d8;
         }
-        
-        body.dark-mode .info-text {
+
+        html.dark-mode .info-text {
             background: #1a2332;
             color: #c9d1d9;
             border-left-color: #58c4dd;
         }
-        
+
         .info-text a {
             color: #00b4d8;
             text-decoration: none;
         }
-        
+
         .info-text a:hover {
             text-decoration: underline;
         }
-        
-        body.dark-mode .info-text a {
+
+        html.dark-mode .info-text a {
             color: #58c4dd;
         }
-        
+
         .blog-cta {
             background: #e8f4f8;
             text-align: center;
@@ -354,21 +357,21 @@
             border-radius: 16px;
             margin: 50px 0;
         }
-        
-        body.dark-mode .blog-cta {
+
+        html.dark-mode .blog-cta {
             background: #1a2332;
         }
-        
+
         .blog-cta h3 {
             color: #0a2540;
             font-size: 1.5rem;
             margin-bottom: 15px;
         }
-        
-        body.dark-mode .blog-cta h3 {
+
+        html.dark-mode .blog-cta h3 {
             color: #f0f3f8;
         }
-        
+
         .blog-cta p {
             color: #4a5568;
             margin-bottom: 20px;
@@ -376,11 +379,11 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
-        body.dark-mode .blog-cta p {
+
+        html.dark-mode .blog-cta p {
             color: #c9d1d9;
         }
-        
+
         .blog-cta .btn {
             display: inline-block;
             background: #00b4d8;
@@ -391,67 +394,68 @@
             border-radius: 50px;
             transition: all 0.3s;
         }
-        
+
         .blog-cta .btn:hover {
             background: #0096b8;
             transform: translateY(-2px);
         }
-        
-        body.dark-mode .blog-cta .btn {
+
+        html.dark-mode .blog-cta .btn {
             background: #58c4dd;
             color: #0a0f1a;
         }
-        
-        body.dark-mode .blog-cta .btn:hover {
+
+        html.dark-mode .blog-cta .btn:hover {
             background: #7cd4e8;
         }
-        
+
         .blog-cta .disclosure-small {
             font-size: 0.7rem;
             color: #6c757d;
             margin-top: 15px;
         }
-        
-        body.dark-mode .blog-cta .disclosure-small {
+
+        html.dark-mode .blog-cta .disclosure-small {
             color: #8b949e;
         }
-        
+
         @media (max-width: 700px) {
             .details-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
-        
+
         @media (max-width: 600px) {
             .calculator-container {
                 padding: 20px;
                 margin: 20px;
             }
-            
+
             .result-value {
                 font-size: 1.8rem;
             }
-            
+
             .input-row {
                 grid-template-columns: 1fr;
                 gap: 0;
             }
-            
+
             .tools-hero h1 {
                 font-size: 1.6rem;
             }
-            
+
             .blog-cta {
                 padding: 25px;
                 margin: 30px 15px;
             }
-            
+
             .blog-cta h3 {
                 font-size: 1.2rem;
             }
         }
     </style>
 </head>
+
 <body>
 
     <!-- HEADER -->
@@ -463,7 +467,7 @@
                     <p>Trade with Structure. Trade with a Plan.</p>
                 </a>
             </div>
-            
+
             <div style="display: flex; align-items: center; gap: 15px;">
                 <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Dark mode">
                     <span class="toggle-icon">🌙</span>
@@ -475,7 +479,7 @@
                     <span></span>
                 </button>
             </div>
-            
+
             <nav id="mainNav">
                 <a href="https://structuretradelab.com">Home</a>
                 <a href="https://blog.structuretradelab.com">Blog</a>
@@ -484,14 +488,15 @@
             </nav>
         </div>
     </header>
-    
+
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- TOOLS HERO -->
     <div class="tools-hero">
         <div class="container">
             <h1>📐 Position Size Calculator</h1>
-            <p>Calculate the exact lot size based on your risk rules and live market prices. Your settings are saved automatically.</p>
+            <p>Calculate the exact lot size based on your risk rules and live market prices. Your settings are saved
+                automatically.</p>
         </div>
     </div>
 
@@ -501,16 +506,17 @@
                 <h1>⚖️ Position Size Calculator</h1>
                 <p>Determine your ideal lot size using the 1% rule or your custom risk percentage</p>
             </div>
-            
+
             <div class="account-note">
-                💵 <strong>USD Account Only</strong> — This calculator assumes your trading account is denominated in USD. All your settings are saved locally.
+                💵 <strong>USD Account Only</strong> — This calculator assumes your trading account is denominated in
+                USD. All your settings are saved locally.
             </div>
-            
+
             <div class="input-group">
                 <label>💰 Account Balance (USD)</label>
                 <input type="number" id="balance" step="100" placeholder="Enter account balance in USD" value="10000">
             </div>
-            
+
             <div class="input-row">
                 <div class="input-group">
                     <label>⚠️ Risk Percentage (%)</label>
@@ -521,7 +527,7 @@
                     <input type="number" id="stopLossPips" step="1" placeholder="Stop loss in pips" value="20">
                 </div>
             </div>
-            
+
             <div class="input-group">
                 <label>🌍 Currency Pair</label>
                 <select id="currencyPair">
@@ -538,26 +544,26 @@
                     <option value="XAUUSD">Gold (XAU/USD)</option>
                 </select>
             </div>
-            
+
             <div class="input-group" id="priceInputGroup" style="display: none;">
                 <label id="priceLabel">💰 Current Market Price</label>
                 <input type="number" id="currentPrice" step="0.0001" placeholder="Enter current price">
                 <div class="helper-text" id="priceHelper">Find this in your trading platform. Saved for next time.</div>
             </div>
-            
+
             <div class="result-box">
                 <div class="result-label">Recommended Position Size</div>
                 <div class="result-value" id="positionSize">0.00</div>
                 <div class="result-sub" id="positionUnits">≈ 0 units</div>
             </div>
-            
+
             <button class="copy-btn" id="copyBtn">📋 Copy Result to Clipboard</button>
             <div class="copy-success" id="copySuccess">✓ Copied to clipboard!</div>
-            
+
             <div style="text-align: center; margin-top: 12px;">
                 <button class="reset-btn" id="resetBtn">⟳ Reset to Defaults</button>
             </div>
-            
+
             <div class="details-grid">
                 <div class="detail-card">
                     <div class="detail-label">Risk Amount</div>
@@ -576,33 +582,42 @@
                     <div class="detail-value" id="stopLossValue">$0.00</div>
                 </div>
             </div>
-            
+
             <div class="info-text">
-                💡 <strong>Why position sizing matters:</strong> The 1% rule means you risk <strong>no more than 1%</strong> of your account on any single trade. This calculator helps you stay consistent and protect your capital. 
-                <a href="https://blog.structuretradelab.com/category/risk-management/">Learn more about risk management →</a>
+                💡 <strong>Why position sizing matters:</strong> The 1% rule means you risk <strong>no more than
+                    1%</strong> of your account on any single trade. This calculator helps you stay consistent and
+                protect your capital.
+                <a href="https://blog.structuretradelab.com/category/risk-management/">Learn more about risk management
+                    →</a>
             </div>
         </div>
-        
+
         <div class="blog-cta">
             <h3>🤝 Found This Tool Useful?</h3>
-            <p>I trade with tight spreads and instant withdrawals. Here's my exact broker setup — same one I use for all my analysis and tools.</p>
+            <p>I trade with tight spreads and instant withdrawals. Here's my exact broker setup — same one I use for all
+                my analysis and tools.</p>
             <a href="https://structuretradelab.com/broker-setup/" class="btn">View My Broker Setup →</a>
-            <p class="disclosure-small">📌 I'm an Introducing Broker. I earn commission when you trade. No extra cost to you.</p>
+            <p class="disclosure-small">📌 I'm an Introducing Broker. I earn commission when you trade. No extra cost to
+                you.</p>
         </div>
     </div>
 
     <footer>
         <div class="container">
             <div class="footer-disclosure">
-                <strong>Disclosure:</strong> Structure Trade Lab is an independent educational website. As an Introducing Broker (IB), I may earn commissions when you trade through links on this site. This does not affect your trading conditions or costs.
+                <strong>Disclosure:</strong> Structure Trade Lab is an independent educational website. As an
+                Introducing Broker (IB), I may earn commissions when you trade through links on this site. This does not
+                affect your trading conditions or costs.
             </div>
             <div class="footer-disclosure">
-                <strong>Risk Warning:</strong> Trading forex and CFDs carries a high level of risk. Past performance does not guarantee future results. Only trade with money you can afford to lose. All tools are for educational purposes.
+                <strong>Risk Warning:</strong> Trading forex and CFDs carries a high level of risk. Past performance
+                does not guarantee future results. Only trade with money you can afford to lose. All tools are for
+                educational purposes.
             </div>
             <p>© <span id="current-year"></span> Structure Trade Lab. All rights reserved.</p>
             <p style="margin-top: 10px;">
-                <a href="https://structuretradelab.com">Home</a> | 
-                <a href="https://blog.structuretradelab.com">Blog</a> | 
+                <a href="https://structuretradelab.com">Home</a> |
+                <a href="https://blog.structuretradelab.com">Blog</a> |
                 <a href="/">Tools</a> |
                 <a href="https://structuretradelab.com/about">About</a>
             </p>
@@ -611,7 +626,7 @@
 
     <!-- Common JavaScript -->
     <script src="https://structuretradelab.com/assets/js/common.js" defer></script>
-    
+
     <!-- Calculator Specific JavaScript -->
     <script>
         // DOM elements for calculator
@@ -624,17 +639,17 @@
         const priceHelper = document.getElementById('priceHelper');
         const currentPriceInput = document.getElementById('currentPrice');
         const resetBtn = document.getElementById('resetBtn');
-        
+
         const positionSizeSpan = document.getElementById('positionSize');
         const positionUnitsSpan = document.getElementById('positionUnits');
         const riskAmountSpan = document.getElementById('riskAmount');
         const pipValueSpan = document.getElementById('pipValue');
         const positionPipValueSpan = document.getElementById('positionPipValue');
         const stopLossValueSpan = document.getElementById('stopLossValue');
-        
+
         const copyBtn = document.getElementById('copyBtn');
         const copySuccessDiv = document.getElementById('copySuccess');
-        
+
         // Default values
         const DEFAULTS = {
             balance: 10000,
@@ -643,7 +658,7 @@
             currencyPair: 'EURUSD',
             currentPrice: null
         };
-        
+
         function getDefaultPrice(pair) {
             const defaults = {
                 'USDJPY': 150.50,
@@ -655,7 +670,7 @@
             };
             return defaults[pair] || 1;
         }
-        
+
         function saveSettings() {
             const settings = {
                 balance: balanceInput.value,
@@ -666,7 +681,7 @@
             };
             localStorage.setItem('positionSizeCalculator', JSON.stringify(settings));
         }
-        
+
         function loadSettings() {
             const saved = localStorage.getItem('positionSizeCalculator');
             if (saved) {
@@ -684,33 +699,33 @@
             }
             return false;
         }
-        
+
         function resetToDefaults() {
             balanceInput.value = DEFAULTS.balance;
             riskPercentInput.value = DEFAULTS.riskPercent;
             stopLossInput.value = DEFAULTS.stopLossPips;
             currencySelect.value = DEFAULTS.currencyPair;
-            
+
             const pair = currencySelect.value;
             if (needsCurrentPrice(pair)) {
                 currentPriceInput.value = getDefaultPrice(pair);
             } else {
                 currentPriceInput.value = '';
             }
-            
+
             updatePriceInputVisibility();
             updateCalculator();
             saveSettings();
         }
-        
+
         function getPipSize(pair) {
             const jpyPairs = ['USDJPY', 'GBPJPY', 'EURJPY'];
             if (jpyPairs.includes(pair)) return 0.01;
             return 0.0001;
         }
-        
+
         function getQuoteCurrency(pair) {
-            if (pair === 'EURUSD' || pair === 'GBPUSD' || pair === 'AUDUSD' || 
+            if (pair === 'EURUSD' || pair === 'GBPUSD' || pair === 'AUDUSD' ||
                 pair === 'NZDUSD' || pair === 'XAUUSD') return 'USD';
             if (pair === 'USDJPY') return 'JPY';
             if (pair === 'USDCHF') return 'CHF';
@@ -719,19 +734,19 @@
             if (pair === 'EURGBP') return 'GBP';
             return 'USD';
         }
-        
+
         function needsCurrentPrice(pair) {
             const needsPrice = ['USDJPY', 'USDCHF', 'USDCAD', 'GBPJPY', 'EURJPY', 'EURGBP'];
             return needsPrice.includes(pair);
         }
-        
+
         function updatePriceInputVisibility() {
             const pair = currencySelect.value;
             const needsPrice = needsCurrentPrice(pair);
-            
+
             if (needsPrice) {
                 priceInputGroup.style.display = 'block';
-                
+
                 if (pair === 'USDJPY' || pair === 'GBPJPY' || pair === 'EURJPY') {
                     priceLabel.innerHTML = '💰 USD/JPY Current Rate';
                     priceHelper.innerHTML = 'Example: 150.50 (1 USD = 150.50 JPY) - saved automatically';
@@ -763,7 +778,7 @@
                     currentPriceInput.step = '0.01';
                     currentPriceInput.placeholder = 'Enter EUR/JPY rate';
                 }
-                
+
                 if (!currentPriceInput.value) {
                     currentPriceInput.value = getDefaultPrice(pair);
                 }
@@ -771,23 +786,23 @@
                 priceInputGroup.style.display = 'none';
             }
         }
-        
+
         function calculatePipValue(pair) {
             const pipSize = getPipSize(pair);
             const quoteCurrency = getQuoteCurrency(pair);
-            
+
             if (quoteCurrency === 'USD') {
                 return 100000 * pipSize;
             }
-            
+
             let currentPrice = parseFloat(currentPriceInput.value);
             if (isNaN(currentPrice) || currentPrice <= 0) {
                 currentPrice = getDefaultPrice(pair);
                 currentPriceInput.value = currentPrice;
             }
-            
+
             let pipValueInQuote = 100000 * pipSize;
-            
+
             if (pair === 'USDJPY' || pair === 'USDCHF' || pair === 'USDCAD') {
                 return pipValueInQuote / currentPrice;
             } else if (pair === 'GBPJPY' || pair === 'EURJPY') {
@@ -795,32 +810,32 @@
             } else if (pair === 'EURGBP') {
                 return pipValueInQuote * 1.27;
             }
-            
+
             return 10;
         }
-        
+
         function updateCalculator() {
             let balance = parseFloat(balanceInput.value);
             let riskPercent = parseFloat(riskPercentInput.value);
             let stopLossPips = parseFloat(stopLossInput.value);
             let pair = currencySelect.value;
-            
+
             if (isNaN(balance) || balance <= 0) balance = 10000;
             if (isNaN(riskPercent) || riskPercent <= 0) riskPercent = 1;
             if (isNaN(stopLossPips) || stopLossPips <= 0) stopLossPips = 20;
-            
+
             let riskAmountUSD = balance * (riskPercent / 100);
             let pipValuePerLot = calculatePipValue(pair);
-            
+
             let denominator = stopLossPips * pipValuePerLot;
             let lots = denominator > 0 ? riskAmountUSD / denominator : 0;
             lots = Math.min(Math.max(lots, 0.01), 50);
             lots = Math.round(lots * 100) / 100;
-            
+
             let units = lots * 100000;
             let positionPipValue = lots * pipValuePerLot;
             let totalStopLoss = stopLossPips * positionPipValue;
-            
+
             positionSizeSpan.innerText = lots.toFixed(2);
             positionUnitsSpan.innerText = `≈ ${Math.round(units).toLocaleString()} units`;
             riskAmountSpan.innerText = `$${riskAmountUSD.toFixed(2)}`;
@@ -828,12 +843,12 @@
             positionPipValueSpan.innerText = `$${positionPipValue.toFixed(2)}`;
             stopLossValueSpan.innerText = `$${totalStopLoss.toFixed(2)}`;
         }
-        
+
         function handleChange() {
             updateCalculator();
             saveSettings();
         }
-        
+
         // Event listeners
         balanceInput.addEventListener('input', handleChange);
         riskPercentInput.addEventListener('input', handleChange);
@@ -842,14 +857,14 @@
             updatePriceInputVisibility();
             handleChange();
         });
-        
+
         if (currentPriceInput) {
             currentPriceInput.addEventListener('input', handleChange);
         }
-        
+
         resetBtn.addEventListener('click', resetToDefaults);
-        
-        copyBtn.addEventListener('click', function() {
+
+        copyBtn.addEventListener('click', function () {
             let resultText = positionSizeSpan.innerText + ' lots';
             navigator.clipboard.writeText(resultText).then(() => {
                 copySuccessDiv.style.display = 'block';
@@ -858,7 +873,7 @@
                 }, 2000);
             });
         });
-        
+
         // Initialize
         const loaded = loadSettings();
         if (!loaded) {
@@ -869,4 +884,5 @@
         }
     </script>
 </body>
+
 </html>
